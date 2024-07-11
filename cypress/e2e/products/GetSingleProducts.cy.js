@@ -1,5 +1,5 @@
 import spok from "cy-spok";
-import {getSingleProducts} from "../../endpoint/api";
+import {getSingleProducts} from "../../apiObjects/api";
 describe('Products Check of API', () => {
       it('Get Valid Single Products', () => {
           let id = "1001"

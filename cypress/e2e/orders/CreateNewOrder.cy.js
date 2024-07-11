@@ -1,4 +1,4 @@
-import {createNewOrder, registerNewClient} from "../../endpoint/api";
+import {createNewOrder, registerNewClient} from "../../apiObjects/api";
 
 describe('Create New Order', () => {
     before(() => {

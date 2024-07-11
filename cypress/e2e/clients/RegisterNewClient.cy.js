@@ -1,4 +1,4 @@
-import {registerNewClient} from "../../endpoint/api";
+import {registerNewClient} from "../../apiObjects/api";
 
 describe('Client Check of API', () => {
     it('Register New Client', () => {

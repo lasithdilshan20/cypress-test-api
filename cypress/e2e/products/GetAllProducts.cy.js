@@ -1,4 +1,4 @@
-import {getAllProducts} from "../../endpoint/api";
+import {getAllProducts} from "../../apiObjects/api";
 
 describe('Products Check of API', () => {
   it('Get All Products', () => {

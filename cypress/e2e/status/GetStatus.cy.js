@@ -1,4 +1,4 @@
-import {checkAPIStatus} from "../../endpoint/api";
+import {checkAPIStatus} from "../../apiObjects/api";
 
 describe('Health Check of API', () => {
   it('Get Status', () => {
