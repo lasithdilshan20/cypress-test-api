@@ -1,12 +1,12 @@
+import spok from "cy-spok";
+import {getSingleProducts} from "../../endpoint/api";
 describe('Products Check of API', () => {
-  it('Get All Products', () => {
-      let id = 1006
-    cy.api({
-        url: Cypress.config().baseAPIUrl+'/products:'+id,
-        method: 'GET',
-        failOnStatusCode: false
-    }).then((response) => {
-        expect(response.status).to.eq(200)
+      it('Get Valid Single Products', () => {
+          let id = "1001"
+          getSingleProducts(id,200)
+      })
+    it('Get Invalid Single Products', () => {
+        let id = "001"
+        getSingleProducts(id,400)
     })
-  })
 })
