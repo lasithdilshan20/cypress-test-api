@@ -67,6 +67,53 @@ export const registerNewClient = (endpoint,expectedStatus) => {
             token: spok.string
         }
     })).then(response => {
-        return response.body.token;
+        cy.writeFile('cypress/fixtures/token.json', { token: response.body.token });
     });
 };
+
+export const createNewOrder = (endpoint,tokenKey,expectedStatus, productsID1,productsID2) => {
+        cy.api({
+            method: 'POST',
+            url: `${apiUrl}/${endpoint}`,
+            headers: {
+                "x-api-key": tokenKey
+            },
+            body: {
+                "customerName": "{{$randomFullName}}",
+                "products": [
+                    {
+                        "id": productsID1,
+                        "quantity": 1
+                    },
+                    {
+                        "id": productsID2,
+                        "quantity": 3
+                    }
+                ]
+            }
+        }).should(spok({
+            status: expectedStatus,
+            body: {
+                id: spok.string,
+                customerName: spok.string,
+                products: spok.array
+            }
+        }))
+}
+
+export const getAllOrder = (endpoint,tokenKey,expectedStatus) => {
+    cy.api({
+        method: 'GET',
+        url: `${apiUrl}/${endpoint}`,
+        headers: {
+            "x-api-key": tokenKey
+        }
+    }).should(spok({
+        status: expectedStatus,
+        body: {
+            id: spok.string,
+            created: spok.string,
+            customerName: spok.string
+        }
+    }))
+}
